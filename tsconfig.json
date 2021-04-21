@@ -10,5 +10,10 @@
         "lib": ["DOM", "ES6", "ES5"]
     },
     "compileOnSave": false,
-    "exclude": ["./test/**/*"]
+    "exclude": [
+        "./test/**/*",
+        "./node_modules/",
+        "./dist/",
+        "./build/"
+    ]
 }
