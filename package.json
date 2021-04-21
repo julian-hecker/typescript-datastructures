@@ -1,0 +1,33 @@
+{
+    "name": "typescript-datastructures",
+    "version": "0.0.1",
+    "description": "Creating and testing several useful data structures using TypeScript.",
+    "main": "./src",
+    "scripts": {
+        "build": "tsc -p ./tsconfig.json",
+        "start": "nodemon ./src/index.ts",
+        "test": "mocha -r ts-node/register test/**/*.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/julian-hecker/typescript-datastructures.git"
+    },
+    "author": "Julian Hecker (https://julianhecker.dev)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/julian-hecker/typescript-datastructures/issues"
+    },
+    "homepage": "https://github.com/julian-hecker/typescript-datastructures#readme",
+    "dependencies": {
+        "ts-node": "^9.1.1",
+        "typescript": "^4.2.4"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.2.16",
+        "@types/mocha": "^8.2.2",
+        "@types/node": "^14.14.41",
+        "chai": "^4.3.4",
+        "mocha": "^8.3.2",
+        "nodemon": "^2.0.7"
+    }
+}

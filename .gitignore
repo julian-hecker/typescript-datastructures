@@ -1,3 +1,8 @@
+# Custom Ignores
+build
+.vscode
+
+
 # Logs
 logs
 *.log
