@@ -6,7 +6,7 @@
     "scripts": {
         "build": "tsc -p ./tsconfig.json",
         "start": "nodemon ./src/index.ts",
-        "test": "mocha -w -r ts-node/register test/**/*.ts"
+        "test": "mocha -r ts-node/register test/**/*.ts"
     },
     "repository": {
         "type": "git",

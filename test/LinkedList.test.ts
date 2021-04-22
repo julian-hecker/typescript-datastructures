@@ -89,7 +89,16 @@ describe('LinkedList', () => {
             const list = new LinkedList([1, 2, 3, 4, 5, 6]);
             list.setAtIndex(0, 5);
             expect(list.toString()).to.equal('5 2 3 4 5 6');
-            // How to handle out of bounds indices?
+
+            const list1 = new LinkedList();
+            list.setAtIndex(0, 10);
+            expect(list1.length).to.equal(0);
+            expect(list1.toString()).to.equal('');
+
+            const list2 = new LinkedList([1, 2, 3, 4, 5, 6]);
+            list2.setAtIndex(10, 11);
+            expect(list2.length).to.equal(6);
+            expect(list2.toString()).to.equal('1 2 3 4 5 6');
         });
     });
 
@@ -108,9 +117,17 @@ describe('LinkedList', () => {
 
         it('should remove an item by value', () => {
             const list = new LinkedList([1, 2, 3, 4, 5, 6]);
-            list.removeAtValue(3);
+            list.removeValue(3);
             expect(list.toString()).to.equal('1 2 4 5 6');
             // What if item not in list?
+
+            const list1 = new LinkedList([1, 2, 3, 3, 4]);
+            list1.removeValue(3);
+            expect(list1.length).to.equal(4);
+            expect(list1.toString()).to.equal('1 2 3 4');
+            list1.removeValue(2);
+            expect(list1.length).to.equal(3);
+            expect(list1.toString()).to.equal('1 3 4')
         });
 
         it('should remove an item by index', () => {
@@ -125,7 +142,11 @@ describe('LinkedList', () => {
             list.clear();
             expect(list.length).to.equal(0);
             expect(list.toString()).to.equal('');
-            // What if there was no items?
+
+            const list1 = new LinkedList();
+            list.clear();
+            expect(list1.length).to.equal(0);
+            expect(list1.toString()).to.equal('');
         });
     });
 });

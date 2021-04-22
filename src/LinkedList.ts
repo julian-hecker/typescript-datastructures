@@ -29,7 +29,7 @@ class LinkedList {
         }
     }
 
-    insertAtHead(data: any): void {
+    insertAtHead(data: any | any[]): void {
         if (typeof data === typeof []) {
             for (let item of data) {
                 this.insertAtHead(item);
@@ -49,11 +49,12 @@ class LinkedList {
         this.length++;
     }
 
-    insertAtTail(data: any): void {
+    insertAtTail(data: any | any[]): void {
         if (typeof data === typeof []) {
-            for (let item in data) {
+            for (let item of data) {
                 this.insertAtTail(item);
             }
+            return;
         }
 
         const node = new LinkedListNode(data, this.tail, null);
@@ -88,31 +89,78 @@ class LinkedList {
         return -1;
     }
 
-    getAtIndex(index: number): LinkedListNode | null {
-        return null;
+    getAtIndex(index: number): unknown | void {
+        let temp = this.head;
+        let i = 0;
+        while (temp !== null) {
+            if (index === i) return temp.value;
+            temp = temp.next;
+            i++;
+        }
     }
 
-    setAtIndex(index: number, value: unknown): LinkedListNode | null {
-        return null;
+    setAtIndex(index: number, value: unknown): void {
+        let temp = this.head;
+        let i = 0;
+        while (temp !== null) {
+            if (index === i) {
+                temp.value = value;
+                return;
+            }
+            temp = temp.next;
+            i++;
+        }
     }
 
-    removeAtHead(): LinkedListNode | null {
-        return null;
+    removeAtHead(): void {
+        if (this.head && this.head.next) {
+            this.head = this.head.next;
+            this.head.prev = null;
+            this.length--;
+        }
     }
 
-    removeAtTail(): LinkedListNode | null {
-        return null;
+    removeAtTail(): void {
+        if (this.tail && this.tail.prev) {
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+            this.length--;
+        }
     }
 
-    removeAtIndex(index: number): LinkedListNode | null {
-        return null;
+    removeAtIndex(index: number): void {
+        let temp = this.head;
+        let i = 0;
+        while (temp !== null) {
+            if (index === i) {
+                if (temp.prev) temp.prev.next = temp.next;
+                if (temp.next) temp.next.prev = temp.prev;
+                this.length--;
+                return;
+            }
+            temp = temp.next;
+            i++;
+        }
     }
 
-    removeAtValue(value: unknown): LinkedListNode | null {
-        return null;
+    removeValue(value: unknown): void {
+        let temp = this.head;
+        while (temp !== null) {
+            if (temp.value === value) {
+                if (temp.prev) temp.prev.next = temp.next;
+                if (temp.next) temp.next.prev = temp.prev;
+                this.length--;
+                return;
+            }
+            temp = temp.next;
+        }
     }
 
-    clear(): void {}
+    clear(): void {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
 
     // Override toString
     toString(): string {
